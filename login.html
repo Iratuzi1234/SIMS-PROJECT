@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            font-family: Arial;
+        }
+        .logo-circle{
+            width:40px;
+            height:40px;
+            background:linear-gradient(to right,#2b5797,#1e90ff);
+            border-radius:50%;
+}
+        .form{
+            width: 40%;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+            text-align: center;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+        input{
+            width: 50%;
+            border-radius: 6px;
+            padding: 8px;
+            border: 4px;
+        }
+        button{
+            width: 50%;
+            padding: 8px 15px;
+            background-color: blue;
+            color: white;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+        }
+        h1{
+            display: flex;
+            align-items: center;
+        }
+        fieldset{
+            background-color: rgb(230, 250, 243);
+            box-shadow: 0 0 10px rgb(0, 255, 68);
+            border: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <!-- login Form -->
+    <form class="form">
+        <table>
+            <tr>
+                <td>
+                <div class="logo-circle"></div>
+                </td>
+                <td><h1>SIMS|</h1></td>
+                <td><p>Stock Inventory <br>Management System</p></td>
+            </tr>
+        </table>
+        <hr>
+        <fieldset>
+
+            <!-- email -->
+
+        <label>✉️Email Address</label><br>
+        <input type="email" id="email" placeholder="✉️Enter Your Email"><br><br>
+
+        <!-- password -->
+
+        <label>🔒 Password</label><br>
+        <input type="password" id="pas" placeholder="🔒Create Password"><br><br>
+        <!-- login Button -->
+        <button type="button" onclick="login()">Login</button><hr>
+        <p>don't have an account? <a href="signup.html">Register</a></p>
+        </fieldset>
+
+
+    </form>
+    <script>
+   function login() {
+
+    // get values from your inputs
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("pas").value;
+
+    // get registered user from localStorage
+    const storedUser = JSON.parse(localStorage.getItem("userData"));
+
+    // check if user exists and matches
+    if (storedUser && email === storedUser.email && password === storedUser.password) {
+
+        // save logged in user
+        localStorage.setItem("loggedInUser", JSON.stringify(storedUser));
+
+        alert("Login successful!");
+
+        // go to dashboard
+        window.location.href = "dashboard.html";
+
+    } else {
+        alert("Invalid Email or Password!");
+    }
+}
+
+</script>
+</body>
+</html>
