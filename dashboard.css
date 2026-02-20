@@ -1,0 +1,269 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+/* FIXED HEADER */
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 25px;
+    background:white;
+    border-bottom:1px solid #ddd;
+    z-index:1000;
+}
+
+.hright h1{
+    font-size:20px;
+}
+
+.hright p{
+    font-size:12px;
+    color:gray;
+}
+
+header button{
+    text-decoration:none;
+    background:#2563eb;
+    color:white;
+    padding:8px 15px;
+    border-radius:6px;
+    border: none;
+}
+
+/* FIXED SIDEBAR */
+.aside{
+    position:fixed;
+    top:60px;
+    left:0;
+    width:220px;
+    height:calc(100vh - 60px);
+    background:#0f172a;
+    padding-top:20px;
+}
+
+.aside ul{
+    list-style:none;
+}
+
+.aside ul li{
+    margin:10px;
+}
+
+.aside ul li a{
+    text-decoration:none;
+    color:white;
+    display:block;
+    padding:12px;
+    border-radius:8px;
+}
+
+.aside ul li a:hover{
+    background:#2563eb;
+}
+
+/* MAIN CONTENT AREA */
+.main{
+    margin-top:60px;
+    margin-left:220px;
+    padding:20px;
+}
+
+/* DASHBOARD TITLE */
+.maincontent{
+    margin-bottom:20px;
+}
+
+.maincontent h1{
+    font-size:26px;
+}
+
+.maincontent p{
+    color:gray;
+}
+
+/* BOX LIST */
+.boxs{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:220px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+.box h3{
+    font-size:14px;
+    color:gray;
+}
+
+.box p{
+    font-size:26px;
+    font-weight:bold;
+    margin:5px 0;
+}
+
+
+/* container for boxes and button */
+.boxs-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+/* boxes row */
+.boxs{
+    display:flex;
+    gap:20px;
+}
+
+/* add product button */
+.add-product button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    font-size:14px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.add-product button:hover{
+    background:#1d4ed8;
+}
+
+
+/* MAIN HEADER */
+.mainheader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:white;
+    padding:15px;
+    border-radius:10px 10px 0 0;
+    border-bottom:1px solid #eee;
+}
+
+.mainheader h2{
+    font-size:18px;
+}
+
+.mainheader input{
+    padding:8px 12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+/* TABLE */
+.producttable{
+    background:white;
+    border-radius:0 0 10px 10px;
+    overflow:hidden;
+}
+
+.producttable table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.producttable th,
+.producttable td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+}
+
+.producttable th{
+    background:#f8fafc;
+    text-align:left;
+}
+
+.status-in{
+    color:green;
+    font-weight:bold;
+}
+
+.status-out{
+    color:red;
+    font-weight:bold;
+}
+
+
+/* POPUP BACKGROUND */
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    justify-content:center;
+    align-items:center;
+}
+
+/* POPUP BOX */
+.popup-content{
+    background:white;
+    padding:25px;
+    width:400px;
+    border-radius:10px;
+}
+
+/* HEADER */
+.popup-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:15px;
+}
+
+.close{
+    cursor:pointer;
+    font-size:20px;
+}
+
+/* FORM */
+.popup form{
+    display:flex;
+    flex-direction:column;
+}
+
+.popup input,
+.popup select{
+    padding:10px;
+    margin-bottom:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+/* SAVE BUTTON */
+.save-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.save-btn:hover{
+    background:#1d4ed8;
+}

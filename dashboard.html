@@ -1,248 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIMS Dashboard</title>
-  <style>
-
-    /* all body */
-    body { 
-      margin:0; font-family: Arial, sans-serif; 
-      background:#4859f5; 
-    }
-    
-    /* Header */
-    header { 
-      background:#1e90ff; 
-      color:white; 
-      padding:15px 20px; 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; }
-    header h1 { 
-      margin:0; 
-      font-size:22px; 
-    }
-
-    header button { 
-      background:white; 
-      color:#1e90ff; 
-      border:none; 
-      padding:8px 12px; 
-      border-radius:6px; 
-      cursor:pointer; 
-      font-weight:bold; 
-    }
-
-    /* Layout */
-    .container { 
-      display:flex; 
-      height:calc(100vh - 60px); 
-    }
-
-    aside { 
-      width:200px; 
-      background:rgb(16, 13, 13); 
-      box-shadow:0 0 10px rgb(234, 226, 226); 
-      padding:20px; 
-      color: #e6faf3;
-    }
-
-    aside ul { 
-      list-style:none; 
-      padding:0; 
-    }
-
-    aside ul li { 
-      padding:10px; 
-      margin:10px 0; 
-      border-radius:6px; 
-      cursor:pointer; 
-      transition:0.3s; 
-    }
-
-
-    aside ul li:hover { 
-      background:#2b5797; 
-      color:white; 
-    }
-
-    main { 
-      flex:1; 
-      padding:20px; 
-      overflow:auto; 
-    }
-    .card { 
-      background:#253fd6; 
-      padding:20px; 
-      border-radius:10px; 
-      margin-bottom:20px; 
-      box-shadow:0 0 10px #00ff44;
-      color: aliceblue;
-    }
-
-    button.add-product { 
-      background:#2b5797; 
-      color:white; 
-      border:none; 
-      padding:10px 15px; 
-      border-radius:6px; 
-      cursor:pointer; 
-      margin-bottom:15px; 
-    }
-
-    table { 
-      width:100%; 
-      border-collapse: collapse; 
-    }
-
-    table, th, td { 
-      border:1px solid #9e3939; 
-    }
-
-    th, td { 
-      padding:10px; 
-      text-align:left; 
-    }
-    .logo-circle{
-            width:40px;
-            height:40px;
-            background:linear-gradient(to right,#2b5797,#1e90ff);
-            border-radius:50%;
-    }
-    .logo{
-      display: flex;
-      justify-content: space-between;
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SIMS</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.js"></script>
 </head>
 <body>
-
+    
 <header>
-  <div class="logo">
-  <div class="logo-circle"></div>
-  <h1>SIMS|</h1><p>Stock Inventory Management System</p>
-  </div>
-  <button onclick="logout()">Logout</button>
+    <div class="hright">
+        <h1>SIMS</h1>
+        <p>Stock Inventory Management System</p>
+    </div>
+    <button onclick="logout()">Logout</button>
 </header>
 
-<div class="container">
-  <!-- Sidebar -->
-  <aside>
+<div class="aside">
     <ul>
-      <li onclick="showSection('overview')">dashboard</li>
-      <li onclick="showSection('inventory')">Product</li>
-      <li onclick="showSection('reports')">Reports</li>
-      <li onclick="showSection('add')">Add Product</li>
+        <li><a href="#main">Dashboard</a></li>
+        <li><a href="#productform">Product</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Settings</a></li>
     </ul>
-  </aside>
-
-  <!-- Main Content -->
-  <main>
-    <!-- dashboard -->
-    <div id="overview" class="card">
-      <h2>Welcome! </h2> 
-      <br> <h4>This Is SIMS That Helps You To Manage Your Stock </h4> <br>
-      <p>This is the site where you can use for selling your product at online <br> 
-      you can go in Product to see what are in stock</p>
-      <p id="welcomeMessage"></p>
-    </div>
-
-    <!-- reports -->
-
-    <div id="reports" class="card" style="display:none";>
-      <h2>Reports About Inventory</h2>
-      <table>
-        <th>
-          <td>Product</td>
-          <td>Quantity</td>
-        </th>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- Inventory -->
-    <div id="inventory" class="card" style="display:none;">
-      <h2>Inventory</h2>
-      <table id="inventoryTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Product Name</th>
-            <th>Quantity</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Add Product -->
-    <div id="add" class="card" style="display:none;">
-      <h2>Add Product</h2>
-      <input type="text" id="productName" placeholder="Product Name"><br><br>
-      <input type="number" id="productQty" placeholder="Quantity"><br><br>
-      <button class="add-product" onclick="addProduct()">Add Product</button>
-    </div>
-  </main>
 </div>
 
-<script>
+<div class="main" id="main">
 
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-  if (!loggedInUser) {
-    alert("Please login first!");
-    window.location.href = "login.html";
-  } else {
-    document.getElementById("welcomeMessage").innerText = `Hello, ${loggedInUser.email}!`;
-  }
+    <div class="maincontent">
+        <h1>Dashboard</h1>
+        <p>Overview of your inventory status</p>
+    </div>
 
-  function logout() {
-    localStorage.removeItem("loggedInUser");
-    window.location.href = "login.html";
-  }
+    <div class="boxs-container">
 
-  function showSection(id) {
-    const sections = ["overview", "inventory", "add"];
-    sections.forEach(sec => document.getElementById(sec).style.display = (sec === id) ? "block" : "none");
-    if (id === "inventory") displayInventory();
-  }
+    <div class="boxs">
+        <div class="box">
+            <h3>Total Products</h3>
+            <p>248</p>
+            <small>+12 this month</small>
+        </div>
 
-  function getInventory() {
-    return JSON.parse(localStorage.getItem("inventory")) || [];
-  }
+        <div class="box">
+            <h3>In Stock</h3>
+            <p>205</p>
+            <small>82.7% of total</small>
+        </div>
 
-  function displayInventory() {
-    const tbody = document.querySelector("#inventoryTable tbody");
-    tbody.innerHTML = "";
-    const inventory = getInventory();
-    inventory.forEach((item, index) => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `<td>${index+1}</td><td>${item.name}</td><td>${item.qty}</td>`;
-      tbody.appendChild(tr);
-    });
-  }
+        <div class="box">
+            <h3>Out of Stock</h3>
+            <p>43</p>
+            <small>17.3% of total</small>
+        </div>
+    </div>
 
-  function addProduct() {
-    const name = document.getElementById("productName").value;
-    const qty = document.getElementById("productQty").value;
-    if (!name || !qty) {
-      alert("Enter product name and quantity!");
-      return;
-    }
-    const inventory = getInventory();
-    inventory.push({ name, qty });
-    localStorage.setItem("inventory", JSON.stringify(inventory));
-    alert("Product added!");
-    document.getElementById("productName").value = "";
-    document.getElementById("productQty").value = "";
-    showSection("inventory");
-  }
-</script>
+    <div class="add-product">
+        <button onclick="openPopup()">Add Product</button>
+        <!-- POPUP FORM -->
+<div class="popup" id="productPopup">
 
+    <div class="popup-content">
+
+        <div class="popup-header">
+            <h2>Add Product</h2>
+            <span class="close" onclick="closePopup()">&times;</span>
+        </div>
+
+        <form id="productform">
+
+            <label>Product ID</label>
+            <input type="text" placeholder="Enter product ID" required>
+
+            <label>Product Name</label>
+            <input type="text" placeholder="Enter product name" required>
+
+            <label>Category</label>
+            <input type="text" placeholder="Enter category" required>
+
+            <label>Quantity</label>
+            <input type="number" placeholder="Enter quantity" required>
+
+            <label>Price</label>
+            <input type="number" placeholder="Enter price" required>
+
+            <label>Status</label>
+            <select required>
+                <option value="">Select status</option>
+                <option>In Stock</option>
+                <option>Out of Stock</option>
+            </select>
+
+            <button type="submit" class="save-btn">Save Product</button>
+
+        </form>
+
+    </div>
+
+</div>
+    </div>
+
+</div>
+
+    <div class="mainheader">
+        <h2>Products</h2>
+        <input type="text" placeholder="Search products...">
+    </div>
+
+    <div class="producttable">
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+        </table>
+    </div>
+
+</div>
 </body>
 </html>
